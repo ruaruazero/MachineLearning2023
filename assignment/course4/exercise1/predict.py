@@ -22,7 +22,6 @@ def predict(theta, x):
     #               You should set p to a vector of 0's and 1's
 
     tmp = theta * x
-    print(tmp.shape)
     prob = sigmoid(tmp)
 
     p = (prob >= 0.5).astype(int)

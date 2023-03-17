@@ -32,12 +32,13 @@ def gradient_descent(x, y, theta, lr, num_iters):
         h = ((x * theta).sum(axis=1) - y)
 
         # get gradient
-        d_w = ((h * x[:, 1]).sum()) / m
-        d_b = h.sum() / m
+        dl_dtheta = ((1 / m) * h.reshape(h.shape[0], 1) * x).sum(axis=0)
+        # d_w = ((h * x[:, 1]).sum()) / m
+        # d_b = h.sum() / m
 
         # update params
-        theta[0] = theta[0] - (d_b * lr)
-        theta[1] = theta[1] - (d_w * lr)
+        theta[0] = theta[0] - (dl_dtheta[0] * lr)
+        theta[1] = theta[1] - (dl_dtheta[1] * lr)
 
         # ============================================================
 
