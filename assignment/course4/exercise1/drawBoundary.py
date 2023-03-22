@@ -14,7 +14,7 @@ def draw_boundary(theta, x, y):
     for i in range(y_range.shape[0]):
         z[i, :] = (map_feature(x_range[0, :], y_range[i, :]) * theta).sum(axis=1)
     print(z)
-    c = plt.contour(x_range, y_range, z, 0, colors="r", labels="Decision Boundary")
+    c = plt.contour(x_range, y_range, z, 0, colors="r")
     plt.xlabel('Microchip Test 1')
     plt.ylabel('Microchip Test 2')
     plt.legend()
