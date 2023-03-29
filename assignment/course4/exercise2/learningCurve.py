@@ -60,16 +60,17 @@ def learning_curve(x, y, x_val, y_val, lam):
     # ---------------------- Sample Solution ----------------------
     theta = np.zeros(x.shape[1])
 
-    for i in range(1, m):
-        x_t = x[0:i, :]
-        y_t = y[0:i]
+    for i in range(m):
+        x_t = x[0:i + 1, :]
+        y_t = y[0:i + 1]
+
+        theta = train_linear_reg(x_t, y_t, lam)
+
         t_err, _ = linear_reg_cost_function(theta, x_t, y_t, 0)
         v_err, _ = linear_reg_cost_function(theta, x_val, y_val, 0)
 
         error_train[i] = t_err
         error_val[i] = v_err
-
-        theta = train_linear_reg(x_t, y_t, lam)
 
     return error_train, error_val
 
