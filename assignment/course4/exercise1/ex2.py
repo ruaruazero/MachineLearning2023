@@ -17,7 +17,6 @@
 
 # Initialization
 import numpy as np
-from matplotlib import pyplot as plt
 from scipy import optimize as opt
 
 from plotData import plot_data
@@ -43,7 +42,7 @@ def main():
 
     plot_data(X, y)
 
-    input("Program paused. Press enter to continue.")
+    input("Program paused. Press enter to continue. \n")
 
     # ============ Part 2: Compute Cost and Gradient ============
     # In this part of the exercise, you will implement the cost and gradient
@@ -54,7 +53,7 @@ def main():
     [m, n] = X.shape
 
     # Add intercept term to x and X_test
-    X = np.concatenate((np.ones((m ,1)), X), axis=1)
+    X = np.concatenate((np.ones((m, 1)), X), axis=1)
 
     # Initialize fitting parameters
     initial_theta = np.zeros(n + 1)

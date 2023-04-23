@@ -19,8 +19,8 @@ def linear_reg_cost_function(theta, x, y, lam):
     m = len(y)
 
     # You need to return the following variables correctly
-    J = 0
-    grad = np.zeros(theta.shape)
+    _J = 0
+    _grad = np.zeros(theta.shape)
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the cost and gradient of regularized linear

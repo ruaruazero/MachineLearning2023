@@ -58,6 +58,8 @@ def main():
     # Add intercept term to X
     X = np.concatenate((np.ones((m, 1)), X), axis=1)
 
+    input("Program paused. Press enter to continue. \n")
+
     # ================ Part 2: Gradient Descent ================
     # ====================== YOUR CODE HERE ======================
     #  Instructions: We have provided you with the following starter
@@ -96,9 +98,13 @@ def main():
     plt.ylabel('Cost J')
     plt.show()
 
+    input("Program paused. Press enter to continue. \n")
+
     # Display gradient descent's result
     print("Theta computed from gradient descent: ")
     print(theta)
+
+    input("Program paused. Press enter to continue. \n")
 
     # Estimate the price of a 1650 sq-ft, 3 br house
     # ====================== YOUR CODE HERE ======================
@@ -110,11 +116,13 @@ def main():
     x_t = np.concatenate((np.ones(1), x_t))
     price = (x_t * theta).sum()  # You should change this
 
+    input("Program paused. Press enter to continue. \n")
+
     # ============================================================
 
     print('Predicted price of a 1650 sq-ft, 3 br house (using gradient descent): ${}'.format(price))
 
-    input("Program paused. Press enter to continue.")
+    input("Program paused. Press enter to continue. \n")
 
     # ================ Part 3: Normal Equations ================
 
@@ -142,6 +150,8 @@ def main():
 
     # Display normal equation's result
     print("Theta computed from the normal equations: \n{}".format(theta))
+
+    input("Program paused. Press enter to continue. \n")
 
     # Estimate the price of a 1650 sq-ft, 3 br house
     # ====================== YOUR CODE HERE ======================

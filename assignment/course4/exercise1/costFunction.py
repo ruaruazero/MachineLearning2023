@@ -15,8 +15,6 @@ def cost_function(theta, x, y):
     m = len(y)
 
     # You need to return the following variables correctly
-    J = 0
-    grad = np.zeros(theta.shape)
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the cost of a particular choice of theta.

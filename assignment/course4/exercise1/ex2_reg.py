@@ -6,7 +6,7 @@
 #  This file contains code that helps you get started on the second part
 #  of the exercise which covers regularization with logistic regression.
 #
-#  You will need to complete the following functions in this exericse:
+#  You will need to complete the following functions in this exercise:
 #
 #     sigmoid.m
 #     costFunction.m
@@ -60,15 +60,15 @@ def main_reg():
     print(f'Cost at initial theta (zeros): {cost}')
 
     # ============= Part 2: Regularization and Accuracies =============
-    # Optional Exercise:
-    # In this part, you will get to try different values of lambda and see how regularization affects the decision boundary.
+    # Optional Exercise: In this part, you will get
+    # to try different values of lambda and see how regularization affects the decision boundary.
     # Try the following values of lambda (0, 1, 10, 100).
 
     # Initialize fitting parameters
     initial_theta = np.zeros(X.shape[1])
 
     # Set regularization parameter lambda to 1 (you should vary this)
-    lambda_ = 1
+    lambda_ = 10
 
     # Set Options
     options = {'maxfun': 400}
@@ -81,7 +81,6 @@ def main_reg():
     draw_boundary(theta, X_init, y)
 
     # Labels and Legend
-
 
     # Compute accuracy on our training set
     p = predict(theta, X)

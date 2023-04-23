@@ -13,6 +13,7 @@ def warm_up_exercise():
     #               and then set them accordingly.
     a = np.identity(5)
 
+    print(a)
     return a
     # ===========================================
 

@@ -42,7 +42,7 @@ def main():
     X = np.array(data["X"])
     y = np.array(data["y"]).reshape(X.shape[0])
     Xtest = np.array(data["Xtest"])
-    ytest = np.array(data["ytest"]).reshape(Xtest.shape[0])
+    _ytest = np.array(data["ytest"]).reshape(Xtest.shape[0])
     Xval = np.array(data["Xval"])
     yval = np.array(data["yval"]).reshape(Xval.shape[0])
 
@@ -86,8 +86,8 @@ def main():
     #                fit.
 
     # Train linear regression with lambda = 0
-    lam = 0
-    theta = train_linear_reg(np.concatenate((np.ones((m, 1)), X), axis=1), y, lam)
+    lambda_ = 0
+    theta = train_linear_reg(np.concatenate((np.ones((m, 1)), X), axis=1), y, lambda_)
 
     # Plot fit over the data
     plt.scatter(X, y, c="red", linewidths=0.5, marker="x")
@@ -104,13 +104,13 @@ def main():
     # Write Up Note: Since the model is under-fitting the data, we expect to
     #                see a graph with "high bias" -- slide 8 in ML-advice.pdf
 
-    lam = 0
+    lambda_ = 0
     error_train, error_val = learning_curve(
         np.concatenate((np.ones((m, 1)), X), axis=1),
         y,
         np.concatenate((np.ones((Xval.shape[0], 1)), Xval), axis=1),
         yval,
-        lam
+        lambda_
     )
     x_range = [i for i in range(1, m + 1)]
     plt.plot(x_range, error_train, c="blue")
@@ -142,7 +142,7 @@ def main():
     # Map X_poly_test and normalize (using mu and sigma)
     X_poly_test = poly_features(Xtest, p)
     X_poly_test = (X_poly_test - mu) / sigma
-    X_poly_test = np.concatenate((np.ones((X_poly_test.shape[0], 1)), X_poly_test), axis=1)
+    _X_poly_test = np.concatenate((np.ones((X_poly_test.shape[0], 1)), X_poly_test), axis=1)
 
     # Map X_poly_val and normalize (using mu and sigma)
     X_poly_val = poly_features(Xval, p)
@@ -160,8 +160,8 @@ def main():
     # lambda = 0. You should try running the code with different values of
     # lambda to see how the fit and learning curve change.
 
-    lam = 0
-    theta = train_linear_reg(X_poly, y, lam)
+    lambda_ = 0.3
+    theta = train_linear_reg(X_poly, y, lambda_)
 
     # Plot training data and fit
     plt.figure(1)
@@ -169,21 +169,21 @@ def main():
     plot_fit(min(X), max(X), mu, sigma, theta, p)
     plt.xlabel('Change in water level (x)')
     plt.ylabel('Water flowing out of the dam (y)')
-    plt.title(f'Polynomial Regression Fit (lambda = {lam})')
+    plt.title(f'Polynomial Regression Fit (lambda = {lambda_})')
     plt.show()
 
     plt.figure(2)
-    error_train, error_val = learning_curve(X_poly, y, X_poly_val, yval, lam)
+    error_train, error_val = learning_curve(X_poly, y, X_poly_val, yval, lambda_)
     plt.plot(range(1, m + 1), error_train, range(1, m + 1), error_val)
 
-    plt.title(f'Polynomial Regression Learning Curve (lambda = {lam})')
+    plt.title(f'Polynomial Regression Learning Curve (lambda = {lambda_})')
     plt.xlabel('Number of training examples')
     plt.ylabel('Error')
     plt.axis([0, 13, 0, 100])
     plt.legend(['Train', 'Cross Validation'])
     plt.show()
 
-    print("Polynomial Regression (lambda = %.f)" % lam)
+    print("Polynomial Regression (lambda = %.f)" % lambda_)
     print("# Training Examples\tTrain Error\tCross Validation Error")
     for i in range(m):
         print('  \t%d\t\t%f\t%f\n' % (i, error_train[i], error_val[i]))

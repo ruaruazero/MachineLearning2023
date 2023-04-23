@@ -20,11 +20,10 @@ import numpy as np
 import scipy.io as scio
 from matplotlib import pyplot as plt
 from plotData import plot_data
-from svmTrain import svm_train
-from linearKernel import linear_kernel
 from visualizeBoundaryLinear import visualize_boundary_linear
 from sklearn.svm import SVC
 from gaussianKernel import gaussian_kernel
+from dataset3Params import dataset_3_params
 
 
 def main():
@@ -105,7 +104,7 @@ def main():
     C = 1
     sigma = 0.1
 
-    model = SVC(C=C, gamma=np.power(0.1, -2)/2, kernel='rbf')
+    model = SVC(C=C, gamma=np.power(sigma, -2)/2, kernel='rbf')
     model.fit(X, y.flatten())
     visualize_boundary_linear(X, y, model)
     plt.show()
@@ -129,15 +128,19 @@ def main():
     plt.show()
     input("Program paused. Press enter to continue.")
 
-
     # ========== Part 7: Training SVM with RBF Kernel (Dataset 3) ==========
     #
     # This is a different dataset that you can use to experiment with. Try
     # different values of C and sigma here.
+    C, sigma = dataset_3_params(X, y, Xval, yval)
+    print("C = ", C, "\t sigma = ", sigma)
 
+    model = SVC(C=C, gamma=np.power(sigma, -2)/2, kernel='rbf')
+    model.fit(X, y.flatten())
+    visualize_boundary_linear(X, y, model)
+    plt.show()
 
-
-
+    input("Program paused. Press enter to continue.")
 
 
 if __name__ == "__main__":

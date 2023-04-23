@@ -69,7 +69,7 @@ def main():
     print('Theta found by gradient descent: {:.4f}, {:.4f}'.format(theta[0], theta[1]))
 
     # Plot the linear fit
-    fig = plt.figure(dpi=150)
+    plt.figure(dpi=150)
     plt.scatter(X[:, 1], y, marker="x", c="red", linewidths=0.5)
     plt.xlabel("Population of City in 10,000s")
     plt.ylabel("Profit in $10,000s")
